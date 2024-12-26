@@ -1,0 +1,387 @@
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Varela+Round&display=swap');
+
+body {
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: "Varela Round", sans-serif;
+}
+
+.chat-app {
+    margin-left: auto;
+    margin: auto;
+    width: 600px;
+    margin-top: 80px;
+}
+
+.chat-app__header {
+    font-weight: 700;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.logo {
+    color: rgb(22, 154, 255);
+    font-size: 30px;
+}
+
+.chat-app__actions {
+    display: flex;
+    gap: 5px;
+}
+
+.chat-app__actions .action {
+    border: none;
+    border-radius: 8px;
+    padding: 6px;
+    background-color: rgb(22, 154, 255);
+    color: white;
+    cursor: pointer;
+    display: none;
+}
+
+.empty {
+    background-color: rgb(194, 194, 194);
+    margin-top: 100px;
+    height: 100px;
+    width: 300px;
+    border-radius: 10px;
+    font-weight: 600;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.chat-app__room {
+    background: rgb(5, 131, 227);
+    height: 40px;
+    border-radius: 8px 8px 0 0;
+    display: flex;
+    align-items: center;
+    font-weight: 600;  
+    padding: 8px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    /* display: none; */
+}
+
+.chat-app__room--left {
+    flex: 1;
+    color: white;
+    gap: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.chat-app__room--left a {
+    color: white;
+}
+
+.chat-app__room--left-avatar {
+    border-radius: 50%;
+    display: inline-block;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.chat-app__room--left-avatar img {
+    object-fit: cover;
+    border-radius: 50%;
+    width: 25px; 
+}
+
+.chat-app__room--right {
+    display: flex;
+    gap: 10px;
+}
+
+.chat-app__room--right i {
+    color: white;
+}
+
+.chat-app__chat {
+    border: 1px solid #ddd;
+    padding: 0 15px;
+    border-top: none;
+    border-bottom: none;
+    height: 280px;
+    overflow-y: auto;
+}
+
+.chat-app__chat--body-incoming {
+    width: 50%;
+    max-width: 40%;
+}
+
+.chat-app__chat--body-incoming-name {
+    font-weight: 600;
+    margin-bottom: 5px;
+    margin-top: 10px;
+}
+
+.chat-app__chat--body-incoming-content {
+    border-radius: 12px;
+    background-color: #F2F1F7;
+    padding: 10px;
+    margin-bottom: 3px;
+    max-width: fit-content;
+    word-wrap: break-word; /* Break long words */
+    overflow-wrap: break-word; /* Break long words */
+}
+
+.chat-app__chat--body-outgoing {
+    width: 50%;
+    margin-left: auto;
+    max-width: 40%;
+    position: relative;
+}
+
+.chat-app__chat--body-outgoing-content {
+    border-radius: 12px;
+    background-color: #169AFF;
+    padding: 10px;
+    margin-bottom: 3px;
+    color: white;
+    margin-left: auto;
+    max-width: fit-content;
+    word-wrap: break-word; /* Break long words */
+    overflow-wrap: break-word; /* Break long words */
+    position: relative;
+}
+
+.chat-app__chat--body-outgoing .button-delete {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: #b1e2ff;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    border: 0;
+    color: white;
+    cursor: pointer;
+    display: none;
+}
+
+.chat-app__chat--body-outgoing:hover .button-delete {
+    display: inline-block;
+}
+
+.chat-app__chat--body-outgoing:hover .button-delete i {
+    font-size: 10px;
+}
+
+.chat-app__chat--body-image {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: flex-end;
+    margin-bottom: 3px;
+    border-radius: 12px;
+}
+
+.chat-app__chat--body-image img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+}
+
+.chat-app__foot {
+    border: 1px solid #ddd;
+    border-width: 0 1px 1px 1px;
+    padding: 15px;
+    border-radius: 0 0 8px 8px;
+    position: relative;
+    /* display: none; */
+}
+
+.chat-app__foot .tooltip {
+    transform: translate3d(0px, 0px, 0px) !important;
+    top: auto !important;
+    bottom: 100% !important;
+    right: -90px !important;
+    left: auto !important;
+}
+
+.chat-app__foot-form {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.chat-app__foot-form .button-icon i, .chat-app__foot-form .button-image i {
+    color: #169AFF;
+}
+
+.chat-app__foot-form .button-icon, .chat-app__foot-form .button-image {
+    padding: 5px;
+    border-radius: 60px;
+}
+
+.chat-app__foot-form .button-icon:hover, .chat-app__foot-form .button-image:hover {
+    background-color: #b1e2ff;
+}
+
+.chat-app__foot-form input {
+    flex: 1;
+    outline: none;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    height: 30px;
+    padding: 8px;
+}
+
+
+.chat-app__foot-form button {
+    border-radius: 8px;
+    border: none;
+    background-color: #169AFF;
+    color: white;
+    padding: 6px;
+    width: 25px;
+    height: 25px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.chat-app__foot-form button i {
+    font-size: 10px;
+}
+
+.tooltip:not(.shown) {
+    display: none;
+}
+
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    width: 600px;
+}
+
+.header__wrap {
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.door {
+    display: flex;
+    gap: 15px;
+}
+
+h1 {
+    font-weight: 700;
+    margin-top: 0;
+}
+
+.main__wrap {
+    width: 600px;
+    background-color: rgb(226, 226, 226);
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form input {
+    width: 100%;
+    margin-top: 10px;
+    height: 48px;
+    border-radius: 8px;
+    outline: none;
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+.form label {
+    font-weight: 700;
+}
+
+.form .form-button {
+    height: 52px;
+    border-radius: 8px;
+    margin-top: 10px;
+    background-color: #169AFF;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: white;
+}
+
+.form .google-login i {
+    margin-right: 5px;
+}
+
+.form .google-login {
+    background-color: rgb(251, 59, 59);
+    height: 40px;
+    width: 170px;
+    color: white;
+    font-size: 12px;
+    padding: 6px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.custom-file-container .image-preview-item {
+    background-size: contain;
+}
+
+.custom-file-container .label-container {
+    display: none;
+}
+
+.custom-file-container .input-container {
+    display: none;
+}
+
+.custom-file-container .image-preview {
+    height: auto;
+    padding: 0;
+}
+
+.custom-file-container .image-preview-item {
+    width: 90px;
+    background-size: contain;
+}
+
+.custom-file-container .image-preview-item-clear {
+    left: auto;
+    right: -6px;
+    background-color: rgb(255, 57, 57);
+}
+
+.custom-file-container .image-preview-item-clear:hover  {
+    background-color: rgb(255, 57, 57);
+    color: white;
+}
+
+.custom-file-container .image-preview-item-clear-icon {
+    color: white;
+}
+
+
+

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang chủ</title>
+    <link  href="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.11.6/viewer.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/file-upload-with-preview/6.1.2/style.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+    <div>1 dự án luyện tập của Lương Việt Thái</div>
+
+    <div class="chat-app">
+        <div class="chat-app__header">
+            <div class="chat-app__logo">
+                <a href="index.html" class="logo">LVTChat</a>
+            </div>
+            <div class="chat-app__actions">
+                <a href="login.html" class="button-login action">Đăng nhập</a>
+                <a href="register.html" class="button-register action">Đăng kí</a>
+                <a href="javascript:;" class="button-logout action">Đăng xuất</a>
+            </div>
+        </div>
+
+        <div class="empty">
+            Vui lòng đăng nhập để sử dụng!
+        </div>
+
+
+        <div class="chat" style="display: none">
+            <div class="chat-app__room">
+                <div href="javascript:;" class="chat-app__room--left">
+                    <a href="javascript:;" class="chat-app__room--left-avatar">
+                        <img src="assets/images/OIP.jpg" alt="">
+                    </a>
+                    <a href="javascript:;" class="chat-app__room--left-user">Chat-group</a>
+                </div>
+                <div href="javascript:;" class="chat-app__room--right">
+                    <a href=""><i class="fa-solid fa-phone"></i></a>
+                    <a href=""><i class="fa-solid fa-video"></i></a>
+                    <a href=""><i class="fa-solid fa-circle-info"></i></a>
+                </div>
+            </div>
+            <div class="chat-app__chat" chat>
+                <div class="chat-app__chat--body">
+                </div>
+            </div>
+            <div class="chat-app__foot">
+                <form action="" class="chat-app__foot-form">
+                    <input type="text" name="content" placeholder="Nhập nội dung...">
+                    <span class="button-icon"><i class="fa-solid fa-face-smile"></i></span>
+                    <label for="file-upload-with-preview-image-upload" class="button-image"><i class="fa-solid fa-image"></i></label>
+                    <button>
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </form>
+                <div class="tooltip" role="tooltip">
+                    <emoji-picker class="light"></emoji-picker>
+                </div>
+                <div class="custom-file-container" data-upload-id="image-upload"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.11.6/viewer.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/file-upload-with-preview/6.1.0/index.iife.min.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/emoji-picker-element@^1/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="assets/scripts/scripts.js" type="module"></script>
+</body>
+
+</html>
