@@ -36,12 +36,13 @@ let lastIncomingUserId = null;
 
 // kiểm tra trạng thái
 onAuthStateChanged(auth, (user) => {
-    if (user) {
+    if (user) { 
         currentUser = user;
         buttonLogout.style.display = "block";
         chat.style.display = "block";
         buttonLogin.style.display = "none";
         buttonRegister.style.display = "none";
+        empty.style.display = "none";
         // ...
     } else {
         setInterval(() => {
@@ -172,47 +173,91 @@ if (buttonGoogle) {
     buttonGoogle.addEventListener("click", () => {
         signInWithPopup(auth, provider)
             .then((result) => {
-
                 const credential = GoogleAuthProvider.credentialFromResult(result);
                 const token = credential.accessToken;
                 const user = result.user;
+
                 if (user) {
-                    const Toast = Swal.mixin({
-                        toast: true,
-                        position: "top-end",
-                        showConfirmButton: false,
-                        timer: 800,
-                        // timerProgressBar: true,
-                        didOpen: (toast) => {
-                            toast.onmouseenter = Swal.stopTimer;
-                            toast.onmouseleave = Swal.resumeTimer;
-                        }
-                    });
-                    Toast.fire({
-                        icon: "success",
-                        title: "Đăng nhập thành công"
-                    })
-                        .then(() => {
+                    // Lưu thông tin người dùng vào Firebase
+                    const userRef = ref(db, 'users/' + user.uid);
+                    set(userRef, {
+                        fullName: user.displayName,
+                        email: user.email,
+                        profilePicture: user.photoURL
+                    }).then(() => {
+                        const Toast = Swal.mixin({
+                            toast: true,
+                            position: "top-end",
+                            showConfirmButton: false,
+                            timer: 800,
+                            // timerProgressBar: true,
+                            didOpen: (toast) => {
+                                toast.onmouseenter = Swal.stopTimer;
+                                toast.onmouseleave = Swal.resumeTimer;
+                            }
+                        });
+                        Toast.fire({
+                            icon: "success",
+                            title: "Đăng nhập thành công"
+                        }).then(() => {
                             window.location.href = "index.html";
-                        })
+                        });
+                    }).catch((error) => {
+                        console.error("Error saving user data:", error);
+                    });
+                } else {
+                    console.log("No user data available");
                 }
-                else {
-                    console.log("no data available");
-                }
-
             }).catch((error) => {
-
-                const errorCode = error.code;
-                const errorMessage = error.message;
-
-                const email = error.customData.email;
-
-                const credential = GoogleAuthProvider.credentialFromError(error);
-                // ...
+                console.error("Error during Google sign-in:", error);
             });
-    })
+    });
 }
+// if (buttonGoogle) {
+//     buttonGoogle.addEventListener("click", () => {
+//         signInWithPopup(auth, provider)
+//             .then((result) => {
+//                 const credential = GoogleAuthProvider.credentialFromResult(result);
+//                 const token = credential.accessToken;
+//                 const user = result.user;
+//                 if (user) {
+//                     const Toast = Swal.mixin({
+//                         toast: true,
+//                         position: "top-end",
+//                         showConfirmButton: false,
+//                         timer: 800,
+//                         // timerProgressBar: true,
+//                         didOpen: (toast) => {
+//                             toast.onmouseenter = Swal.stopTimer;
+//                             toast.onmouseleave = Swal.resumeTimer;
+//                         }
+//                     });
+//                     Toast.fire({
+//                         icon: "success",
+//                         title: "Đăng nhập thành công"
+//                     })
+//                         .then(() => {
+//                             window.location.href = "index.html";
+//                         })
+//                 }
+//                 else {
+//                     console.log("no data available");
+//                 }
+
+//             }).catch((error) => {
+
+//                 const errorCode = error.code;
+//                 const errorMessage = error.message;
+
+//                 const email = error.customData.email;
+
+//                 const credential = GoogleAuthProvider.credentialFromError(error);
+//                 // ...
+//             });
+//     })
+// }
 // Hết Đăng nhập với google
+
 
 // Đăng xuất
 if (buttonLogout) {
@@ -273,7 +318,7 @@ if (chatForm) {
         const imagesUpload = upload.cachedFileArray;
 
         if ((content || imagesUpload.length > 0) && userId) {
-            
+
             const imagesLink = [];
 
             if (imagesUpload.length > 0) {
@@ -290,12 +335,12 @@ if (chatForm) {
                         method: 'POST',
                         body: formData,
                     })
-                    .then((response) => {
-                        return response.json();
-                    })
-                    .then((data) => {
-                        imagesLink.push(data.url);
-                    });
+                        .then((response) => {
+                            return response.json();
+                        })
+                        .then((data) => {
+                            imagesLink.push(data.url);
+                        });
                 }
             }
 
@@ -325,7 +370,6 @@ if (chatBody) {
             if (snapshot.exists()) {
                 const fullName = snapshot.val().fullName;
                 const newChat = document.createElement("div");
-
                 newChat.setAttribute("chat-key", key);
 
                 let htmlButtonDelete = "";
@@ -333,14 +377,13 @@ if (chatBody) {
                 let htmlImages = "";
 
                 if (auth.currentUser) {
-                    if (userId == currentUser.uid) {
+                    if (userId === currentUser.uid) {
                         newChat.classList.add("chat-app__chat--body-outgoing");
                         htmlButtonDelete = `
                             <button class="button-delete">
                                 <i class="fa-regular fa-trash-can"></i>
                             </button>
                         `;
-    
                         if (content) {
                             htmlContent = `
                                 <div class="chat-app__chat--body-outgoing-content">
@@ -354,12 +397,12 @@ if (chatBody) {
                         }
                         if (images && images.length > 0) {
                             htmlImages += `<div class="chat-app__chat--body-image">`;
-    
+
                             for (let i of images) {
                                 htmlImages += `<img src="${i}"/>`;
                             }
                             htmlImages += `</div>`;
-    
+
                             newChat.innerHTML = `
                                 ${htmlImages}
                                 ${htmlButtonDelete}
@@ -370,13 +413,13 @@ if (chatBody) {
                     else {
                         newChat.classList.add("chat-app__chat--body-incoming");
                         let htmlFullName = '';
-                        if (userId != lastIncomingUserId) {
+                        if (userId !== lastIncomingUserId) {
                             htmlFullName = `
                                 <div class="chat-app__chat--body-incoming-name">${fullName}</div>
                             `;
                             lastIncomingUserId = userId;
                         }
-    
+
                         if (content) {
                             htmlContent = `
                                 <div class="chat-app__chat--body-outgoing-content">
@@ -393,12 +436,12 @@ if (chatBody) {
                         }
                         if (images && images.length > 0) {
                             htmlImages += `<div class="chat-app__chat--body-image">`;
-    
+
                             for (let i of images) {
-                                htmlImages += `<img src="${i}"/>`; 
+                                htmlImages += `<img src="${i}"/>`;
                             }
                             htmlImages += `</div>`;
-    
+
                             newChat.innerHTML = `
                                 ${htmlFullName}
                                 ${htmlImages}
