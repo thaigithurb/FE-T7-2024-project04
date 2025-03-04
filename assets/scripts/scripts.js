@@ -213,50 +213,7 @@ if (buttonGoogle) {
             });
     });
 }
-// if (buttonGoogle) {
-//     buttonGoogle.addEventListener("click", () => {
-//         signInWithPopup(auth, provider)
-//             .then((result) => {
-//                 const credential = GoogleAuthProvider.credentialFromResult(result);
-//                 const token = credential.accessToken;
-//                 const user = result.user;
-//                 if (user) {
-//                     const Toast = Swal.mixin({
-//                         toast: true,
-//                         position: "top-end",
-//                         showConfirmButton: false,
-//                         timer: 800,
-//                         // timerProgressBar: true,
-//                         didOpen: (toast) => {
-//                             toast.onmouseenter = Swal.stopTimer;
-//                             toast.onmouseleave = Swal.resumeTimer;
-//                         }
-//                     });
-//                     Toast.fire({
-//                         icon: "success",
-//                         title: "Đăng nhập thành công"
-//                     })
-//                         .then(() => {
-//                             window.location.href = "index.html";
-//                         })
-//                 }
-//                 else {
-//                     console.log("no data available");
-//                 }
 
-//             }).catch((error) => {
-
-//                 const errorCode = error.code;
-//                 const errorMessage = error.message;
-
-//                 const email = error.customData.email;
-
-//                 const credential = GoogleAuthProvider.credentialFromError(error);
-//                 // ...
-//             });
-//     })
-// }
-// Hết Đăng nhập với google
 
 
 // Đăng xuất
