@@ -20,6 +20,21 @@ a {
     margin-top: 80px;
 }
 
+@media (max-width: 767px) {
+    .chat-app {
+        width: 400px;
+    }
+}
+
+@media (max-width: 576px) {
+    .chat-app {
+        width: 400px;
+        padding: 10px;
+        width: 95%;
+    }
+}
+
+
 .chat-app__header {
     font-weight: 700;
     display: flex;
@@ -61,7 +76,6 @@ a {
     margin-left: auto;
     margin-right: auto;
 }
-
 
 .chat-app__room {
     background: rgb(5, 131, 227);
@@ -108,6 +122,17 @@ a {
 
 .chat-app__room--right i {
     color: white;
+}
+
+@media (max-width: 767px) {
+    .chat-app__room--left-user {
+        font-size: 14px;
+    }
+
+    
+    .chat-app__room--left-avatar img {
+        width: 20px;
+    }
 }
 
 .chat-app__chat {
@@ -197,6 +222,34 @@ a {
     object-fit: contain;
     border: 1px solid #ddd;
     border-radius: 12px;
+}
+
+@media (max-width: 767px) {
+    .chat-app__chat--body-outgoing-content, 
+    .chat-app__chat--body-incoming-content {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .chat-app__chat--body-incoming-name {
+        font-size: 14px;
+    }
+
+    a i {
+        width: 20px;
+    }
+
+    .chat-app__room--right {
+        gap: 5px;
+    }
+
+    .chat-app__logo {
+        font-size: 25px;
+    }
+
+    .button-logout {
+        font-size: 14px;
+    }
 }
 
 .chat-app__foot {
