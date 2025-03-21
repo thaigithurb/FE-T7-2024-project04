@@ -20,21 +20,6 @@ a {
     margin-top: 80px;
 }
 
-@media (max-width: 767px) {
-    .chat-app {
-        width: 400px;
-    }
-}
-
-@media (max-width: 576px) {
-    .chat-app {
-        width: 400px;
-        padding: 10px;
-        width: 95%;
-    }
-}
-
-
 .chat-app__header {
     font-weight: 700;
     display: flex;
@@ -122,17 +107,6 @@ a {
 
 .chat-app__room--right i {
     color: white;
-}
-
-@media (max-width: 767px) {
-    .chat-app__room--left-user {
-        font-size: 14px;
-    }
-
-    
-    .chat-app__room--left-avatar img {
-        width: 20px;
-    }
 }
 
 .chat-app__chat {
@@ -224,34 +198,6 @@ a {
     border-radius: 12px;
 }
 
-@media (max-width: 767px) {
-    .chat-app__chat--body-outgoing-content, 
-    .chat-app__chat--body-incoming-content {
-        font-size: 14px;
-        padding: 8px;
-    }
-
-    .chat-app__chat--body-incoming-name {
-        font-size: 14px;
-    }
-
-    a i {
-        width: 20px;
-    }
-
-    .chat-app__room--right {
-        gap: 5px;
-    }
-
-    .chat-app__logo {
-        font-size: 25px;
-    }
-
-    .button-logout {
-        font-size: 14px;
-    }
-}
-
 .chat-app__foot {
     border: 1px solid #ddd;
     border-width: 0 1px 1px 1px;
@@ -319,11 +265,14 @@ a {
     display: none;
 }
 
+
+
 .container {
     margin-left: auto;
     margin-right: auto;
     width: 600px;
 }
+
 
 .header__wrap {
     padding: 16px;
@@ -342,7 +291,7 @@ h1 {
 }
 
 .main__wrap {
-    width: 600px;
+    width: 100%;
     background-color: rgb(226, 226, 226);
     padding: 20px;
     border-radius: 15px;
@@ -436,5 +385,80 @@ h1 {
     color: white;
 }
 
+@media (max-width: 767px) {
+
+    .chat-app {
+        width: 400px;
+    }
+
+    .chat-app__room--left-user {
+        font-size: 14px;
+    }
+
+    
+    .chat-app__room--left-avatar img {
+        width: 20px;
+    }
+
+    .chat-app__chat--body-outgoing-content, 
+    .chat-app__chat--body-incoming-content {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .chat-app__chat--body-incoming-name {
+        font-size: 14px;
+    }
+
+    a i {
+        width: 20px;
+    }
+
+    .chat-app__room--right {
+        gap: 5px;
+    }
+
+    .chat-app__logo {
+        font-size: 25px;
+    }
+
+    .button-logout {
+        font-size: 14px;
+    }
+
+    .container {
+        width: 400px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    .form {
+        gap: 10px;
+    }
+
+    .form label {
+        font-size: 14px;
+    } 
+
+    .form input {
+        padding: 6px;
+        margin-top: 8px;
+    }
+}
+
+@media (max-width: 576px) {
+
+    .chat-app {
+        width: 400px;
+        padding: 10px;
+        width: 95%;
+    }
+
+    .container {
+        width: 350px;
+    }
+}
 
 
